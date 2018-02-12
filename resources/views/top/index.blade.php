@@ -5,10 +5,12 @@
     <div class="container">
         <div class="row my-5">
             <div class="col mx-auto">
+                {{ Form::open(['method' => 'GET', 'url' => 'search']) }}
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control mr-1" placeholder="キーワード" aria-label="Username" aria-describedby="basic-addon1">
-                    <button type="button" class="btn btn-outline-primary">検索</button>
+                    {{ Form::input('検索する', 'query', null, ["class" => "form-control mr-1", "placeholder"=> "キーワード"]) }}
+                    {{ Form::submit("検索",["class"=>"btn btn-outline-primary"])}}
                 </div>
+                {{ Form::close() }}
             </div>
         </div>
     </div>

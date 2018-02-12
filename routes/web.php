@@ -15,6 +15,7 @@ Route::get('/', "TopController@index");
 
 
 Route::get('/images/{id}', "DetailController@index")->where('id', '[0-9]+');
+Route::get('/search', "SearchController@index");
 
 
 

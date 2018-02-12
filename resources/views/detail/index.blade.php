@@ -13,13 +13,20 @@
     <!-- ※ Twitter共通設定 -->
     <meta name="twitter:card" content="photo" />
 @endsection
-@section('contents')
 
+@section('contents')
     <div class="container">
         <div class="row my-5">
             <div class="col">
                 <div class="card mx-auto" style="width: 18rem;">
                     <img class="card-img-top" src='{{$image["thumbnail"]}}' alt="Card image cap">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-secondary" role="alert">
+                    コピーURL => {{url()->current()}}
                 </div>
             </div>
         </div>

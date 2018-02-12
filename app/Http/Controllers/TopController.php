@@ -29,6 +29,8 @@ class TopController extends Controller{
             "size" => 10
         ];
         $re = $this->ESClient->search($params);
+
+        /** @var TYPE_NAME $images */
         $images = $re["hits"]["hits"];
         foreach ($images as &$image){
             $image["thumbnail"] = env("S3")."/thumbnails/".$image["_id"].".".$image["_source"]["extension"];
@@ -37,4 +39,5 @@ class TopController extends Controller{
             "images" => $images
         ]);
     }
+
 }
