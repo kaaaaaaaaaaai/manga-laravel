@@ -11,7 +11,7 @@
     <meta property="og:description" content="{{$image["plane_tags"][0] or "漫画１コマ検索"}}" />
 
     <!-- ※ Twitter共通設定 -->
-    <meta name="twitter:card" content="photo" />
+    <meta name="twitter:card" content="summary" />
 @endsection
 
 @section('contents')
