@@ -23,10 +23,22 @@ class TopController extends Controller{
     }
 
     public function index(){
+
+        list($usec, $sec) = explode(" ", microtime());
+        $seed =  ((float)$usec + (float)$sec);
         $params = [
             "index" => "prod",
             "type"  => "image",
-            "size" => 12
+            "size" => 12,
+            "body" => [
+                "query" => [
+                    "function_score" => [
+                        "random_score" => [
+                            "seed" => (int)$seed
+                        ]
+                    ]
+                ]
+            ]
         ];
         $re = $this->ESClient->search($params);
 

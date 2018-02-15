@@ -57,6 +57,15 @@ class SearchController extends Controller{
             $should[] =
                 [
                     "match" =>  [
+                        "plane_tags" => [
+                            "query" => $q,
+                            "fuzziness" => "AUTO"
+                        ]
+                    ]
+                ];
+            $should[] =
+                [
+                    "match" =>  [
                         "tag_reading_completion_ja" => [
                             "query" => $q,
                             "fuzziness" => "AUTO"
