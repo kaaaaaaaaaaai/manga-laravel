@@ -42,7 +42,7 @@ class SearchController extends Controller{
             $should[] =
                 [
                     "wildcard" => [
-                        "plane_tags.keyword" => "*{$q}*"
+                        "plane_tags.raw" => "*{$q}*"
                     ]
                 ];
             $should[] =
