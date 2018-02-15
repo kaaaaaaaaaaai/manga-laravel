@@ -54,6 +54,15 @@ class SearchController extends Controller{
                         ]
                     ]
                 ];
+            $should[] =
+                [
+                    "match" =>  [
+                        "tag_reading_completion_ja" => [
+                            "query" => $q,
+                            "fuzziness" => "AUTO"
+                        ]
+                    ]
+                ];
         }
         $params = [
             "index" => "prod",

@@ -26,7 +26,7 @@ class TopController extends Controller{
         $params = [
             "index" => "prod",
             "type"  => "image",
-            "size" => 10
+            "size" => 12
         ];
         $re = $this->ESClient->search($params);
 
