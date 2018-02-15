@@ -20,7 +20,7 @@
         @foreach($images as $image)
             <div class="col-12 col-md-4 col-lg-3 col-sm-6 mb-2">
                 <div class="card" style="width: 15rem;">
-                    <img style="width: 100%;object-fit: cover; max-height:200px" class="card-img-top" src='{{$image["thumbnail"]}}' alt="Card image cap">
+                    <img  style="height: 200px;object-fit: contain;" class="" src='{{$image["thumbnail"]}}' alt="Card image cap">
                     <div class="card-body">
                        <a href="/images/{{$image["_id"]}}" class="btn btn-primary btn-lg btn-block">画像をSNSで使う</a>
                     </div>
