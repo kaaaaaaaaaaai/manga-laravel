@@ -45,6 +45,15 @@ class SearchController extends Controller{
                         "plane_tags.keyword" => "*{$q}*"
                     ]
                 ];
+            $should[] =
+                [
+                    "match" =>  [
+                        "tags" => [
+                            "query" => $q,
+                            "fuzziness" => "AUTO"
+                        ]
+                    ]
+                ];
         }
         $params = [
             "index" => "prod",
