@@ -36,7 +36,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-green">
         <a href="/" class="text-white font-weight-normal" style="text-decoration: none;">マンガ1コマ検索</a>
-        <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
