@@ -36,19 +36,22 @@ class SearchController extends Controller{
         foreach ($query as $q){
             $should[] =[
                 "term" => [
-                    "tags.keyword" => $q
+                    "tags.keywords" => $q
                 ]
-                ];
+            ];
             $should[] =
                 [
                     "wildcard" => [
-                        "plane_tags.raw" => "*{$q}*"
-                    ]
+                        "plane_tags.raw" => [
+                            "value" => "*{$q}*",
+                            "boost" => 100
+                        ]
+                    ],
                 ];
             $should[] =
                 [
                     "match" =>  [
-                        "tags" => [
+                        "tags.keywords" => [
                             "query" => $q,
                             "fuzziness" => "AUTO"
                         ]
@@ -73,19 +76,18 @@ class SearchController extends Controller{
                     ]
                 ];
         }
+
         $params = [
             "index" => "prod",
             "type"  => "image",
-            "size" => 10,
+            "size" =>999,
 
             "body" => [
                 "query" => [
-                    "constant_score" => [
-                        "filter" => [
+                    "function_score" => [
+                        "query" => [
                             "bool" => [
-                                "should" => [
-                                    $should
-                                ]
+                                "should" => $should
                             ]
                         ]
                     ]
@@ -98,9 +100,38 @@ class SearchController extends Controller{
         foreach ($images as &$image){
             $image["thumbnail"] = env("S3")."/thumbnails/".$image["_id"].".".$image["_source"]["extension"];
         }
-        return view("top.index", [
-            "images" => $images
+
+        $p_tags = $this->popular_tags();
+        return view("search.index", [
+            "images" => $images,
+            "popular_tags" => $p_tags
         ]);
     }
 
+    /**
+     * @return array
+     */
+    private function popular_tags(){
+        $tags = [
+            "ヒナまつり",
+            "ニセコイ",
+            "なもり",
+            "ゆるゆり",
+            "のんのんびより",
+            "うすた京介",
+            "ナルト",
+            "アホガール",
+            "ディーふらぐ",
+            "範馬刃牙",
+            "名探偵コナン",
+            "恋愛ラボ",
+            "はじめの一歩",
+            "ばらかもん",
+            "咲-Saki-",
+            "BLEACH",
+            "ピューと吹く!ジャガー",
+        ];
+
+        return $tags;
+    }
 }

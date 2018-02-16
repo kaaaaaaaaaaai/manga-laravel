@@ -1,6 +1,13 @@
 @extends('layout')
 
+@section("ex_css")
+    <style>
+        .bg-green{
+            background-color: #009688;
+        }
 
+    </style>
+@endsection
 
 @section('ogp')
     <meta property="og:title" content="漫画1コマ検索" />
@@ -24,7 +31,9 @@
             </div>
             <div>
                 @foreach($image["tags"] as $tag)
-                    <span class="badge badge-pill badge-secondary">{{$tag}}</span>
+                    <a href="/search?query={{$tag}}" style="text-decoration: none;">
+                        <span class="badge badge-pill badge-secondary mb-1">{{$tag}}</span>
+                    </a>
                 @endforeach
             </div>
         </div>

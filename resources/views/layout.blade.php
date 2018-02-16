@@ -24,11 +24,19 @@
 
         <!-- Styles -->
         @yield("ogp")
+        @yield("ex_css")
+        <style>
+            body{
+                background-color: #edecec;
+            }
+        </style>
     </head>
-    <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a href="/" class="navbar-brand" href="#">漫画１コマ検索</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <body data-ma-header="teal">
+    <div class="main" style="z-index: 5">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-green">
+        <a href="/" class="text-white font-weight-normal" style="text-decoration: none;">マンガ1コマ検索</a>
+        <button class="" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -38,15 +46,16 @@
             </ul>
             {{ Form::open(['method' => 'GET', 'url' => 'search', "class"=> "form-inline my-2 my-lg-0"]) }}
             {{ Form::input('検索する', 'query', null, ["class" => "form-control mr-sm-2", "placeholder"=> "キーワード"]) }}
-            {{ Form::submit("検索",["class"=>"btn btn-outline-primary my-2 my-sm-0"])}}
+            {{ Form::submit("検索",["class"=>"btn btn-outline-light my-2 my-sm-0"])}}
             {{ Form::close() }}
         </div>
     </nav>
 
-        <div class="container-fluid">
+        <div class="">
             <!-- Content here -->
             @yield("contents")
         </div>
+    </div>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
