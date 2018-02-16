@@ -99,7 +99,7 @@
         <div class="row">
         @foreach($images as $image)
             <div class="col col-md-4 col-lg-3 col-sm-6 mb-2">
-                <div class="card mx-auto" style="">
+                <div class="card mx-auto">
                     <img  style="height: 200px;object-fit: contain;" class="" src='{{$image["thumbnail"]}}' alt="Card image cap">
                     <div class="card-body">
                         @foreach($image["_source"]["tags"] as $tag)
