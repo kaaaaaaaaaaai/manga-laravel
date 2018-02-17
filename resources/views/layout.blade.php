@@ -34,7 +34,7 @@
     <body data-ma-header="teal">
     <div class="main" style="z-index: 5">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-green">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #009688;">
         <a href="/" class="text-white font-weight-normal" style="text-decoration: none;">マンガ1コマ検索</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

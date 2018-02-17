@@ -1,13 +1,5 @@
 @extends('layout')
 
-@section("ex_css")
-    <style>
-        .bg-green{
-            background-color: #009688;
-        }
-
-    </style>
-@endsection
 
 @section('ogp')
     <meta property="og:title" content="漫画1コマ検索" />
@@ -38,17 +30,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col col-md-8">
+            <div class="col-12 col-md-8">
                 <div class="alert alert-secondary" role="alert">
                     <p class="h6">
                         <a href="#" class="badge badge-secondary">link</a>
-                        {{url()->current()}}
-                        <button type="button" class="btn btn-sm btn-outline-success ml-1">COPY</button>
+                    <div class="input-group mb-3">
+                        {{ Form::input('検索する', 'url', url()->current(), ["class" => "form-control mr-1", "placeholder"=> "キーワード", "readonly"]) }}
+                    </div>
+                        <button type="button" data-clipboard-text="{{url()->current()}}" class="btn btn-sm btn-outline-success ml-1 js-copy-button">COPY</button>
                     </p>
                     <p>このURLをツイートすることでTwitter上で画像が綺麗に表示されます。</p>
                 </div>
             </div>
-            <div class="col col-md-4">
+            <div class="col-12 col-md-4">
                 <figure class="figure">
                     <img src="https://s3-ap-northeast-1.amazonaws.com/manga-one/public/publish_image.png" class="figure-img img-fluid rounded" alt="A generic square placeholder image with rounded corners in a figure.">
                     <figcaption class="figure-caption text-right">画像はサンプルです。</figcaption>
@@ -59,4 +53,14 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+    <script>
+        var clipboard = new Clipboard('.js-copy-button');
+        clipboard.on('success', function(e) {
+            console.info('Trigger:', e.trigger);
+        });
+        clipboard.on('error', function(e) {
+            console.error('Trigger:', e.trigger);
+        });
+    </script>
 @endsection
