@@ -15,7 +15,7 @@
 
 @section('contents')
     <div class="container">
-        <div class="row my-5">
+        <div class="row my-5 mb-2">
             <div class="col">
                 <div class="card mx-auto" style="width: 18rem;">
                     <img class="card-img-top" src='{{$image["thumbnail"]}}' alt="Card image cap">
@@ -35,9 +35,9 @@
                     <p class="h6">
                         <a href="#" class="badge badge-secondary">link</a>
                     <div class="input-group mb-3">
-                        {{ Form::input('検索する', 'url', url()->current(), ["class" => "form-control mr-1", "placeholder"=> "キーワード", "readonly"]) }}
+                        {{ Form::input('検索する', 'url', url()->current(), ["class" => "form-control", "placeholder"=> "キーワード", "readonly"]) }}
                     </div>
-                        <button type="button" data-clipboard-text="{{url()->current()}}" class="btn btn-sm btn-outline-success ml-1 js-copy-button">COPY</button>
+                        <button data-placement="top" title="コピーしました" type="button" data-clipboard-text="{{url()->current()}}" class="btn-block btn btn-sm btn-outline-success js-copy-button">URL簡単COPY</button>
                     </p>
                     <p>このURLをツイートすることでTwitter上で画像が綺麗に表示されます。</p>
                 </div>
@@ -58,6 +58,7 @@
         var clipboard = new Clipboard('.js-copy-button');
         clipboard.on('success', function(e) {
             console.info('Trigger:', e.trigger);
+            $(e.trigger).tooltip('show')
         });
         clipboard.on('error', function(e) {
             console.error('Trigger:', e.trigger);
