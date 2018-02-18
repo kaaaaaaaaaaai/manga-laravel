@@ -2,6 +2,10 @@
 
 
 @section('ogp')
+    <title>{{implode(",",$image["tags"])}}|漫画1コマネタ検索</title>
+    <meta name="keywords" content="{{implode(",",$image["tags"])}}">
+    <meta name="description" content="{{implode(",",$image["tags"])}}の返信に使えるネタ画像">
+
     <meta property="og:title" content="漫画1コマ検索" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{url()->current()}}"/>

@@ -1,5 +1,10 @@
 @extends('layout')
 
+@section("ogp")
+    <title>漫画1コマ検索 Twitterのリプに使えるネタ画像集</title>
+    <meta name="keywords" content="漫画,1コマ,twitter,リプ画像,煽り画像,ネタ画像">
+    <meta name="description" content="メールやLINE,Twitterの返信に使えるネタ画像">
+@endsection
 @section("ex_css")
     <style>
         body::before{

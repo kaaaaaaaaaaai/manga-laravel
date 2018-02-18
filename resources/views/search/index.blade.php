@@ -1,6 +1,14 @@
 @extends('layout')
 
+
+@section("ogp")
+    <title>{{$query}}|漫画1コマネタ画像検索</title>
+    <meta name="keywords" content="漫画,1コマ,twitter,リプ画像,煽り画像,ネタ画像">
+    <meta name="description" content="{{$query}}の漫画1コマネタ画像一覧">
+@endsection
+
 @section('contents')
+
     <div class="container">
         <div class="row my-5">
             <div class="col mx-auto">
@@ -36,12 +44,14 @@
                     <div class="card mx-auto">
                         <img  style="height: 200px;object-fit: contain;" class="" src='{{$image["thumbnail"]}}' alt="Card image cap">
                         <div class="card-body">
+                            <p class="card-text">
                             @foreach($image["_source"]["tags"] as $tag)
-                                <a href="/search?query={{$tag}}" style="text-decoration: none;">
-                                    <span class="badge badge-pill badge-secondary mb-1 text-justify">{{$tag}}</span>
+                                <a href="/search?query={{$tag}}" style="text-decoration: none;" class="card-text badge badge-pill badge-secondary mb-1">
+                                    {{$tag}}
                                 </a>
                             @endforeach
-                            <a href="/images/{{$image["_id"]}}" class="btn btn-outline-success btn-lg btn-block">画像をSNSで使う</a>
+                            </p>
+                            <a href="/images/{{$image["_id"]}}" class="btn btn-outline-success btn-lg btn-block">SNSで使う</a>
                         </div>
                     </div>
                 </div>
