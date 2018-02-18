@@ -104,7 +104,8 @@ class SearchController extends Controller{
         $p_tags = $this->popular_tags();
         return view("search.index", [
             "images" => $images,
-            "popular_tags" => $p_tags
+            "popular_tags" => $p_tags,
+            "query" => $query
         ]);
     }
 
