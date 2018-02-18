@@ -2,9 +2,9 @@
 
 
 @section("ogp")
-    <title>{{implode(",",$image["tags"])}}|漫画1コマネタ画像検索</title>
+    <title>{{implode(",", $query)}}|漫画1コマネタ画像検索</title>
     <meta name="keywords" content="漫画,1コマ,twitter,リプ画像,煽り画像,ネタ画像">
-    <meta name="description" content="『{{implode(",",$image["tags"])}}』の漫画1コマネタ画像一覧">
+    <meta name="description" content="『{{implode(",", $query)}}』の漫画1コマネタ画像一覧">
 @endsection
 
 @section('contents')
