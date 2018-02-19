@@ -41,6 +41,8 @@
         <div class="row">
             <h5>- 新着画像 -</h5>
         </div>
+        <!-- Previous Page Link -->
+        {{$imagePaginate->appends($params)->links()}}
         <div class="row">
             @foreach($images as $image)
                 <div class="col col-md-4 col-lg-3 col-sm-6 mb-2">
@@ -60,5 +62,7 @@
                 </div>
             @endforeach
         </div>
+        {{$imagePaginate->appends($params)->links()}}
+
     </div>
 @endsection

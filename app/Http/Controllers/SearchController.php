@@ -9,13 +9,15 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Elasticsearch\ClientBuilder;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 /**
  * Class TopController
  * @package App\Http\Controllers
  */
 class SearchController extends Controller{
-
+    const pageSize = 20;
     public function __construct()
     {
         $this->ESClient = ClientBuilder::create()->setHosts([
@@ -32,6 +34,7 @@ class SearchController extends Controller{
         $query = preg_replace('/\s+/', ' ', $query);
         //姓と名で分割
         $query = explode(' ',$query);
+        $page = $request->get("page", 0);
         $should = [];
         foreach ($query as $q){
             $should[] =[
@@ -80,8 +83,8 @@ class SearchController extends Controller{
         $params = [
             "index" => "prod",
             "type"  => "image",
-            "size" =>999,
-
+            "size" =>self::pageSize,
+            "from" => $page * self::pageSize,
             "body" => [
                 "query" => [
                     "function_score" => [
@@ -97,15 +100,23 @@ class SearchController extends Controller{
         $re = $this->ESClient->search($params);
         /** @var TYPE_NAME $images */
         $images = $re["hits"]["hits"];
+        $total = $re["hits"]["total"];
         foreach ($images as &$image){
             $image["thumbnail"] = env("S3")."/thumbnails/".$image["_id"].".".$image["_source"]["extension"];
         }
 
         $p_tags = $this->popular_tags();
+
+        $paginator = new LengthAwarePaginator($images, $total, self::pageSize, $page);
+        $paginator->setPath($request->url());
+
+        $params = ["query" => implode(" ", $query)];
         return view("search.index", [
             "images" => $images,
             "popular_tags" => $p_tags,
-            "query" => $query
+            "query" => $query,
+            "imagePaginate" => $paginator,
+            "params" => $params
         ]);
     }
 
