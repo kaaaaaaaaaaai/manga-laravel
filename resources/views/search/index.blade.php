@@ -20,6 +20,9 @@
                 {{ Form::close() }}
             </div>
         </div>
+        <div class="alert alert-primary" role="alert">
+            Tips : 思うような検索結果出ない場合は「ひらがな」や検索ワードを短くすると出る場合があります。
+        </div>
     </div>
     <div class="container">
         <div class="row">
