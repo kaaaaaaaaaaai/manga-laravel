@@ -56,7 +56,7 @@
             <div class="col mx-auto">
                 {{ Form::open(['method' => 'GET', 'url' => 'search']) }}
                 <div class="input-group mb-3">
-                    {{ Form::input('検索する', 'query', null, ["class" => "form-control mr-1", "placeholder"=> "キーワード"]) }}
+                    {{ Form::input('検索する', 'query', null, ["class" => "form-control mr-1", "placeholder"=>"キャラクター,セリフ,作品名で検索可能です"]) }}
                     {{ Form::submit("検索",["class"=>"btn btn-outline-light"])}}
                 </div>
                 {{ Form::close() }}
