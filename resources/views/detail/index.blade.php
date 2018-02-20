@@ -25,6 +25,16 @@
                     <img class="card-img-top" src='{{$image["thumbnail"]}}' alt="Card image cap">
                 </div>
             </div>
+            <div class="col mt-2 mx-auto">
+                <!-- detail -->
+                <ins class="adsbygoogle"
+                     style="display:inline-block;width:728px;height:90px"
+                     data-ad-client="ca-pub-1691009953433743"
+                     data-ad-slot="3767484076"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
             <div>
                 @foreach($image["tags"] as $tag)
                     <a href="/search?query={{$tag}}" style="text-decoration: none;">

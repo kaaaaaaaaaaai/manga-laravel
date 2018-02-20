@@ -102,8 +102,26 @@
             <h5>- 新着画像 -</h5>
         </div>
         <div class="row">
-        @foreach($images as $image)
-            <div class="col col-md-4 col-lg-3 col-sm-6 mb-2">
+        @foreach($images as $key => $image)
+            @if($key == 1)
+
+                <div class="col-12 col-md-4 col-lg-3 col-sm-6 mb-2">
+                    <div class="card mx-auto">
+                        <!-- manga-top -->
+                        <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-1691009953433743"
+                        data-ad-slot="1248830620"
+                        data-ad-format="auto"></ins>
+                        <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            @endif
+            <div class="col-12 col-md-4 col-lg-3 col-sm-6 mb-2">
                 <div class="card mx-auto">
                     <img  style="height: 200px;object-fit: contain;" class="" src='{{$image["thumbnail"]}}' alt="Card image cap">
                     <div class="card-body">
