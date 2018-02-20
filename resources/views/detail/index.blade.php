@@ -25,15 +25,17 @@
                     <img class="card-img-top" src='{{$image["thumbnail"]}}' alt="Card image cap">
                 </div>
             </div>
-            <div class="col mt-2 mx-auto">
-                <!-- detail -->
-                <ins class="adsbygoogle"
-                     style="display:inline-block;width:728px;height:90px"
-                     data-ad-client="ca-pub-1691009953433743"
-                     data-ad-slot="3767484076"></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
+            <div class="mt-2 mx-auto">
+                <script src="//adm.shinobi.jp/s/6159e8d3ec8979f1dae24d2d6df34670"></script>
+
+                {{--<!-- detail -->--}}
+                {{--<ins class="adsbygoogle"--}}
+                     {{--style="display:inline-block;width:728px;height:90px"--}}
+                     {{--data-ad-client="ca-pub-1691009953433743"--}}
+                     {{--data-ad-slot="3767484076"></ins>--}}
+                {{--<script>--}}
+                    {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
+                {{--</script>--}}
             </div>
             <div>
                 @foreach($image["tags"] as $tag)
