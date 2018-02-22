@@ -102,47 +102,65 @@
             <h5>- 新着画像 -</h5>
         </div>
         <div class="row">
-        @foreach($images as $key => $image)
-            @if(\Agent::isMobile() && ($key == 1 || $key == 6))
+            @foreach($images as $key => $image)
+                @if(\Agent::isMobile() && ($key == 1 || $key == 6))
 
+                    <div class="col-12 col-md-4 col-lg-3 col-sm-6 mb-2">
+                        {{--<div class="card">--}}
+                            {{--<div class="card-body">--}}
+                                {{--<div class="mx-auto mt-3">--}}
+                                    {{--<script src="//adm.shinobi.jp/s/2a9af09f152b6774dbe09aaeff953a94"></script>--}}
+                                    <!-- manga-top -->
+                                    <ins class="adsbygoogle"
+                                    style="display:block"
+                                    data-ad-client="ca-pub-1691009953433743"
+                                    data-ad-slot="1248830620"
+                                    data-ad-format="auto"></ins>
+                                    <script>
+                                    (adsbygoogle = window.adsbygoogle || []).push({});
+                                    </script>
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    </div>
+                @endif
                 <div class="col-12 col-md-4 col-lg-3 col-sm-6 mb-2">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="mx-auto mt-3">
-                                {{--<script src="//adm.shinobi.jp/s/2a9af09f152b6774dbe09aaeff953a94"></script>--}}
-                                <!-- manga-top -->
-                                <ins class="adsbygoogle"
-                                style="display:block"
-                                data-ad-client="ca-pub-1691009953433743"
-                                data-ad-slot="1248830620"
-                                data-ad-format="auto"></ins>
-                                <script>
-                                (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            @endif
-            <div class="col-12 col-md-4 col-lg-3 col-sm-6 mb-2">
-                <div class="card mx-auto">
-                    <a href="/images/{{$image["_id"]}}">
-                        <div style="">
-                            <img class="card-img-top" style="object-fit: contain;width: 100%;" src='{{$image["thumbnail"]}}' alt="Card image cap">
+                    <div class="card mx-auto">
+                        <a href="/images/{{$image["_id"]}}">
+                            <div style="">
+                                <img class="card-img-top" style="object-fit: contain;width: 100%;" src='{{$image["thumbnail"]}}' alt="Card image cap">
 
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            @foreach($image["_source"]["tags"] as $tag)
+                                <a href="/search?query={{$tag}}" style="text-decoration: none;">
+                                        <span style=" white-space: normal !important;" class="badge badge-pill badge-secondary mb-1 text-justify">{{$tag}}</span>
+                                </a>
+                            @endforeach
+                           <a href="/images/{{$image["_id"]}}" class="btn btn-outline-success btn-lg btn-block">SNSで使う</a>
                         </div>
-                    </a>
-                    <div class="card-body">
-                        @foreach($image["_source"]["tags"] as $tag)
-                            <a href="/search?query={{$tag}}" style="text-decoration: none;">
-                                    <span style=" white-space: normal !important;" class="badge badge-pill badge-secondary mb-1 text-justify">{{$tag}}</span>
-                            </a>
-                        @endforeach
-                       <a href="/images/{{$image["_id"]}}" class="btn btn-outline-success btn-lg btn-block">SNSで使う</a>
                     </div>
                 </div>
+            @endforeach
+            <div class="col-12 col-md-4 col-lg-3 col-sm-6 mb-2">
+            {{--<div class="card">--}}
+            {{--<div class="card-body">--}}
+            {{--<div class="mx-auto mt-3">--}}
+            {{--<script src="//adm.shinobi.jp/s/2a9af09f152b6774dbe09aaeff953a94"></script>--}}
+            <!-- manga-top -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-1691009953433743"
+                     data-ad-slot="1248830620"
+                     data-ad-format="auto"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                {{--</div>--}}
+                {{--</div>--}}
+                {{--</div>--}}
             </div>
-        @endforeach
         </div>
     </div>
 @endsection
