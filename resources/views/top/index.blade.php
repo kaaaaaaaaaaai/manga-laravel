@@ -109,18 +109,18 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mx-auto mt-3">
-                                <script src="//adm.shinobi.jp/s/2a9af09f152b6774dbe09aaeff953a94"></script>
+                                {{--<script src="//adm.shinobi.jp/s/2a9af09f152b6774dbe09aaeff953a94"></script>--}}
+                                <!-- manga-top -->
+                                <ins class="adsbygoogle"
+                                style="display:block"
+                                data-ad-client="ca-pub-1691009953433743"
+                                data-ad-slot="1248830620"
+                                data-ad-format="auto"></ins>
+                                <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                                </script>
                             </div>
                         </div>
-                        {{--<!-- manga-top -->--}}
-                        {{--<ins class="adsbygoogle"--}}
-                        {{--style="display:block"--}}
-                        {{--data-ad-client="ca-pub-1691009953433743"--}}
-                        {{--data-ad-slot="1248830620"--}}
-                        {{--data-ad-format="auto"></ins>--}}
-                        {{--<script>--}}
-                        {{--(adsbygoogle = window.adsbygoogle || []).push({});--}}
-                        {{--</script>--}}
                     </div>
                 </div>
             @endif
