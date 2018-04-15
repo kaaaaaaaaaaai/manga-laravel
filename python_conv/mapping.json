@@ -1,0 +1,93 @@
+{
+  "settings": {
+      "analysis": {
+        "filter": {
+          "katakana_readingform": {
+            "type": "kuromoji_readingform",
+            "use_romaji": false
+          },
+          "kana_filter": {
+            "type" : "icu_transform",
+            "id": "Katakana-Hiragana"
+          },
+          "kuromoji_no_romaji_readingform": {
+            "type": "kuromoji_readingform",
+            "use_romaji": false
+          }
+        },
+        "tokenizer":{
+            "ja_tokenizer":{
+              "type": "kuromoji_tokenizer",
+              "mode": "search"
+            },
+          "ja-search-tokenizer": {
+            "type": "kuromoji_tokenizer",
+            "mode": "search"
+          },
+          "kuromoji_tokenizer_search": {
+            "type": "kuromoji_tokenizer",
+            "mode": "search",
+            "discard_punctuation" : "true"
+          }
+        },
+        "analyzer": {
+          "ja-search-analyzer": {
+            "type": "custom",
+            "tokenizer": "ja-search-tokenizer"
+          },
+          "my_ja_analyzer": {
+            "type":      "custom",
+            "tokenizer": "ja_tokenizer"
+          },
+          "kuromoji_reading_analyzer": {
+            "type": "custom",
+            "tokenizer": "kuromoji_tokenizer_search",
+            "filter": ["kuromoji_baseform",
+              "kuromoji_part_of_speech",
+              "cjk_width",
+              "stop",
+              "ja_stop",
+              "kuromoji_stemmer",
+              "kuromoji_no_romaji_readingform",
+              "kana_filter",
+              "lowercase"]
+          }
+        }
+      }
+
+  },
+  "mappings": {
+    "image": {
+      "dynamic": "strict",
+      "properties":{
+        "id": {
+          "type": "integer"
+        },
+        "extension": {
+          "type": "text",
+          "index": "not_analyzed"
+        },
+        "tags": {
+          "type": "text",
+          "analyzer": "my_ja_analyzer",
+          "copy_to": ["tag_reading_completion_ja"]
+        },
+        "plane_tags": {
+          "type": "text",
+          "index": "not_analyzed",
+          "fields": {
+            "raw": {
+              "type": "keyword"
+            }
+          },
+          "fielddata": true
+        },
+        "tag_reading_completion_ja": {
+          "type": "text",
+          "analyzer": "kuromoji_reading_analyzer",
+          "search_analyzer": "simple"
+        }
+      }
+    }
+  }
+}
